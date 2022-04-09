@@ -1,8 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Search from './Search'
+import React,{useContext} from 'react';
+import { Link } from 'react-router-dom';
+import authContext from '../../context/authentication/authContext';
 
 const Navbar = () => {
+
+  const AuthContext = useContext(authContext);
+  const {authenticated, userLogout} = AuthContext;
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
@@ -17,7 +21,18 @@ const Navbar = () => {
                 <Link className="nav-link" to={'/profile'}>Profile</Link>
             </div>
             </div>
-            
+            {
+            authenticated &&
+            <div>
+              <form className="container-fluid justify-content-start">
+                <button 
+                  className="btn btn-danger me-2" 
+                  type="button"
+                  onClick={userLogout}
+                >Logout</button>
+              </form>
+            </div>
+            }
         </div>
     </nav>
   )
