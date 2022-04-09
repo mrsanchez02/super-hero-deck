@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const axiosClient =  axios.create({
-    baseURL : 'https://challenge-react.alkemy.org/',
-    headers: {'Access-Control-Allow-Origin': '*'}
+    baseURL : 'http://challenge-react.alkemy.org/'
 });
 
 export default axiosClient;

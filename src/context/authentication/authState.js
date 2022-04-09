@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useReducer } from 'react'
 import axiosClient from '../../config/axiosClient'
 import {
@@ -19,9 +20,11 @@ const AuthState = ({children}) => {
 
     const [state, dispatch] = useReducer(authReducer, initialState)
 
-    const userLogin = async data => {
+    const userLogin = async data => {        
         try {
             const response = await axiosClient.post('',data)
+            // const response = await axios.post('https://challenge-react.alkemy.org/',data)
+            console.log(response)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: response.data
@@ -29,8 +32,9 @@ const AuthState = ({children}) => {
         } catch (error) {
             console.log(error)
             dispatch({
-                type: LOGIN_ERROR,
-                payload: error.response.data.error
+                type: LOGIN_ERROR
+                // ,
+                // payload: error.response.data.error
             })
         }
     }
