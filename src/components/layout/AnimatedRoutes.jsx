@@ -3,14 +3,17 @@ import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
+import ProtectedRoutes from '../routes/protectedRoutes';
 
 const AnimatedRoutes = () => {
 
   return (
         <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
-            <Route path="profile" element={<Profile />} />
+            <Route element={<ProtectedRoutes />} >
+              <Route path="/" element={<Home />} />
+              <Route path="profile" element={<Profile />} />
+            </Route>
             <Route path="*" element={<ErrorPage />} />
         </Routes>
   )

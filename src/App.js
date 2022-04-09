@@ -5,6 +5,7 @@ import AnimatedRoutes from "./components/layout/AnimatedRoutes";
 import Navbar from "./components/layout/Navbar";
 import AuthState from "./context/authentication/authState";
 
+
 function App() {
 
   return (
